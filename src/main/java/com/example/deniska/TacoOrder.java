@@ -1,6 +1,9 @@
 package com.example.deniska;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
@@ -13,10 +16,13 @@ import java.util.List;
 /**
  * Класс заказов, осуществление платежа
  */
+@Table
 @Data
 public class TacoOrder {
+    @Id
     private long id;
     private Date placedAt;
+    //@Column("customer_name") нужен для изм-я названия колонок
     @NotBlank(message = "Delivery name is required")
     private String deliveryName;
     @NotBlank(message = "Delivery street is required")
